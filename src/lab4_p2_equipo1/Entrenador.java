@@ -14,8 +14,11 @@ public class Entrenador {
         this.Nombre = Nombre;
         this.edad = edad;
         this.dinero = dinero;
+        this.Nombre = this.Nombre; 
     }
 
+    
+    
     public String getNombre() {
         return Nombre;
     }
