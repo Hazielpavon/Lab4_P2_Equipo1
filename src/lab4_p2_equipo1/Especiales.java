@@ -5,10 +5,22 @@
  */
 package lab4_p2_equipo1;
 
-/**
- *
- * @author LUIS HENRIQUEZ
- */
-public class Especiales {
+import java.util.Random;
+
+public class Especiales extends Movimiento {
+
+    Random random = new Random();
+
+    public Especiales(String nombre, String descripcion) {
+        super(nombre, descripcion);
+    }
     
+    public int Generar(){ 
+    int numero = 0;    
+    for (int i = 0; i < 10; i++) {
+          numero = random.nextInt(100)+1;
+        }
+    return numero;
+    }
+
 }
