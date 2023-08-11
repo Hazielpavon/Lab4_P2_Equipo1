@@ -16,7 +16,7 @@ public class Lab4_P2_Equipo1 {
         boolean seguir = true;
 
         while (seguir) {
-
+            System.out.println("Te mando un beso Nuila");
             System.out.println("1. Registrar Entrenador");
             System.out.println("2. Battle Factory");
             System.out.println("3. Capturar/Entrenar");
