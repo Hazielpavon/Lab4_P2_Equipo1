@@ -1,12 +1,15 @@
 package lab4_p2_equipo1;
 
+import java.util.ArrayList;
+
 public class Entrenador {
 
     private String Nombre;
     private int edad;
     private double dinero;
     private String pok[] = new String[6];
-
+    private ArrayList<Pokemon> caja = new ArrayList();
+    
     public Entrenador() {
     }
 
