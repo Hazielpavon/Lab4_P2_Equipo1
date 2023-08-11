@@ -46,7 +46,53 @@ public class Lab4_P2_Equipo1 {
                     break;
 
                 case 2:
-
+                    
+                     String ok = " "; 
+                     String no = " ";
+                     for (Object arr : Entrenadores) {
+                         
+                            if (arr instanceof Entrenador) {
+                                ok+= Entrenadores.indexOf(arr) + " - " + arr + "\n";
+                                System.out.println(ok);
+                            }
+                        }
+                     System.out.println(" ");
+                     
+                     for (Object arre : Pokemones) {
+                            if (arre instanceof Pokemon) {
+                            no += Pokemones.indexOf(arre) + " - " + arre + "\n";
+                               }
+                        }
+                     
+                     System.out.println("Ingrese el pokemon del Entrenador #1 que va a luchar ");
+                     int entrepelea1 = leer.nextInt();
+                     Pokemon.
+                             
+                             
+                             
+                     String ko = " "; 
+                     String on = " ";
+                     for (Object arr : Entrenadores) {
+                         
+                            if (arr instanceof Entrenador) {
+                                ko+= Entrenadores.indexOf(arr) + " - " + arr + "\n";
+                                System.out.println(ok);
+                            }
+                        }
+                     
+                     
+                     for (Object arre : Pokemones) {
+                            if (arre instanceof Pokemon) {
+                            on+= Pokemones.indexOf(arre) + " - " + arre + "\n";
+                               }
+                        }
+                     
+                     System.out.println("Ingrese el pokemon del Entrenador #1 que va a luchar ");
+                     int entrepelea12 = leer.nextInt();
+                     
+                     
+                     
+                     
                     break;
 
                 case 3:
