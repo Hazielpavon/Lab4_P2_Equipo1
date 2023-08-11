@@ -7,7 +7,7 @@ public class Entrenador {
     private String Nombre;
     private int edad;
     private double dinero;
-    private String pok[] = new String[6];
+    private Pokemon pok[] = new Pokemon[6];
     private ArrayList<Pokemon> caja = new ArrayList();
     
     public Entrenador() {
@@ -46,14 +46,31 @@ public class Entrenador {
         this.dinero = dinero;
     }
 
-    public String[] getPok() {
+    public Pokemon[] getPok() {
         return pok;
     }
 
-    public void setPok(String[] pok) {
+    public void setPok(Pokemon[] pok) {
         this.pok = pok;
     }
+    
+    public void setPokInTeam(Pokemon p, int cont){
+        this.pok[cont]=p;
+    }
 
+    public void setPokeInBox(Pokemon p){
+        this.caja.add(p);
+    }
+
+    public ArrayList<Pokemon> getCaja() {
+        return caja;
+    }
+
+    public void setCaja(ArrayList<Pokemon> caja) {
+        this.caja = caja;
+    }
+    
+    
     @Override
     public String toString() {
         return "Entrenador: " + "Nombre = " + Nombre + " , edad = " + edad + " , dinero = " + dinero + ", pokemones = " + pok;

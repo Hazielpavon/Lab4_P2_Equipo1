@@ -12,6 +12,7 @@ public class Pokemon {
     private int especial;
     private int speed;
     private String estado;
+    private Movimiento moveset[] = new Movimiento[4];
 
     public Pokemon(String especie, int nivel, int exp, int subirnivel, int HP, int ataque, int defensa, int especial, int speed, String estado) {
         this.especie = especie;
@@ -104,6 +105,18 @@ public class Pokemon {
 
     public void setEstado(String estado) {
         this.estado = estado;
+    }
+
+    public Movimiento[] getMoveset() {
+        return moveset;
+    }
+
+    public void setMoveset(Movimiento[] moveset) {
+        this.moveset = moveset;
+    }
+
+    public void setMove(Movimiento m, int cont) {
+        this.moveset[cont] = m;
     }
 
     @Override
