@@ -1,5 +1,6 @@
 package lab4_p2_equipo1;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Lab4_P2_Equipo1 {
@@ -7,14 +8,20 @@ public class Lab4_P2_Equipo1 {
     public static void main(String[] args) {
         Scanner leer = new Scanner(System.in);
 
+        ArrayList Entrenadores = new ArrayList();
+
+        ArrayList<Object> caja = new ArrayList();
+        ArrayList<Object> Pokemones = new ArrayList();
+
         boolean seguir = true;
 
         while (seguir) {
 
             System.out.println("1. Registrar Entrenador");
             System.out.println("2. Battle Factory");
-            System.out.println("3. Capturar/Entrnar");
-            System.out.println("4. Salir");
+            System.out.println("3. Capturar/Entrenar");
+            System.out.println("4. anadir movimientos");
+            System.out.println("5. Salir");
 
             int opcion = leer.nextInt();
 
@@ -33,7 +40,9 @@ public class Lab4_P2_Equipo1 {
                     double dineroencuenta = leer.nextDouble();
 
                     Entrenador a = new Entrenador(nombree, edad, dineroencuenta);
-                    
+
+                    Entrenadores.add(a);
+
                     break;
 
                 case 2:
@@ -41,10 +50,55 @@ public class Lab4_P2_Equipo1 {
                     break;
 
                 case 3:
+                    int cont = 0;
+
+                    for (Object arr : Entrenadores) {
+                        if (arr instanceof Entrenador) {
+                            System.out.println(Entrenadores.indexOf((arr)) + "----" + arr.toString());
+                        }
+                    }
+
+                    System.out.println("Ingrese el entrenador que quiere modificar:");
+                    int mod = leer.nextInt() - 1;
+
+                    if (mod >= 0 && mod < Entrenadores.size()) {
+
+                        System.out.println("1. Entrenar");
+                        System.out.println("2. Capturar");
+                        int opcion2 = leer.nextInt();
+
+                        switch (opcion2) {
+
+                            case 1:
+                                if (cont != 0) {
+
+                                } else {
+                                    System.out.println("Ingrese un pokemon primero");
+                                }
+
+                                break;
+
+                            case 2:
+
+                                break;
+                        }
+                    } else {
+                        System.out.println("Ingrese un indice correcto");
+                    }
+
+                /*ArrayList<Object> pokemon = new ArrayList();
+                    Scanner leer = new Scanner(System.in);
+                    
+                    System.out.println("Ingrese el nombre del pokemon");
+                    String especie = leer.next();
+                    
+                    pokemon.add(new Pokemon());
+                 */
+                case 4:
 
                     break;
 
-                case 4:
+                case 5:
 
                     seguir = false;
                     break;
@@ -53,8 +107,8 @@ public class Lab4_P2_Equipo1 {
 
                     System.out.println("Ingrese un dato correcto");
             }
+
         }
 
     }
-
 }
