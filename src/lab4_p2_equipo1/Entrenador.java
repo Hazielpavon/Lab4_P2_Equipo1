@@ -1,12 +1,10 @@
-
 package lab4_p2_equipo1;
 
-
 public class Entrenador {
-    
- private String Nombre; 
- private int edad; 
- private double dinero; 
+
+    private String Nombre;
+    private int edad;
+    private double dinero;
 
     public Entrenador() {
     }
@@ -43,12 +41,7 @@ public class Entrenador {
 
     @Override
     public String toString() {
-        return " Entrenedor: " + "Nombre = " + Nombre + " , edad = " + edad + " , dinero = "  + dinero;
+        return " Entrenedor: " + "Nombre = " + Nombre + " , edad = " + edad + " , dinero = " + dinero;
     }
-    
-    
-    
-    
-    
-   
+
 }
