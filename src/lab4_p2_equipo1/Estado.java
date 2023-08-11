@@ -26,9 +26,9 @@ public class Estado extends Movimiento {
 
     public int Generar(){ 
     int numero = 0;    
-    for (int i = 0; i < 10; i++) {
+    
           numero = random.nextInt(100)+1;
-        }
+        
     return numero;
     }
 

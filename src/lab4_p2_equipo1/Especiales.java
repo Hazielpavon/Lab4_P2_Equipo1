@@ -14,13 +14,20 @@ public class Especiales extends Movimiento {
     public Especiales(String nombre, String descripcion) {
         super(nombre, descripcion);
     }
+
+    public int Generar() {
+        int numero = 0;
+        
+        numero = random.nextInt(50) + 1;
+        return numero;
+    }
     
-    public int Generar(){ 
-    int numero = 0;    
-    for (int i = 0; i < 10; i++) {
-          numero = random.nextInt(100)+1;
-        }
-    return numero;
+    public int Generar1() {
+        int numero2 = 0;
+        
+        
+        numero2 = random.nextInt(500) + 100;
+        return numero2;
     }
 
 }

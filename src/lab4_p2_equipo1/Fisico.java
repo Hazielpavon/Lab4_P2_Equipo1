@@ -10,9 +10,9 @@ public class Fisico extends Movimiento{
     
     public int Generar(){ 
     int numero = 0;    
-    for (int i = 0; i < 10; i++) {
-          numero = random.nextInt(100)+1;
-        }
+   
+          numero = random.nextInt(50)+1;
+   
     return numero;
     }
 }
