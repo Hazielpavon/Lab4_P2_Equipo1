@@ -5,23 +5,24 @@ import java.util.Scanner;
 
 public class Lab4_P2_Equipo1 {
 
+    static int contador = 0; 
+    
     public static void main(String[] args) {
         Scanner leer = new Scanner(System.in);
 
         ArrayList Entrenadores = new ArrayList();
-
-        ArrayList<Object> caja = new ArrayList();
-        ArrayList<Object> Pokemones = new ArrayList();
+        ArrayList<Object> caja = new ArrayList(); 
+        ArrayList<Object> movimientos = new ArrayList();
 
         boolean seguir = true;
 
         while (seguir) {
-
+            System.out.println("Te mando un beso Nuila");
             System.out.println("1. Registrar Entrenador");
             System.out.println("2. Battle Factory");
             System.out.println("3. Capturar/Entrenar");
-            System.out.println("4. anadir movimientos");
-            System.out.println("5. Salir");
+            System.out.println("4. Anadir ataques");
+            System.out.println("4. Salir");
 
             int opcion = leer.nextInt();
 
@@ -102,10 +103,12 @@ public class Lab4_P2_Equipo1 {
                     while (seguir3) {
 
                         int cont = 0;
-
+                        int cont2 = 1;
                         for (Object arr : Entrenadores) {
+
                             if (arr instanceof Entrenador) {
-                                System.out.println(Entrenadores.indexOf((arr))  + arr.toString());
+                                System.out.println(Entrenadores.indexOf((arr)) + cont2 + arr.toString());
+                                cont2++;
                             }
                         }
 
@@ -133,9 +136,37 @@ public class Lab4_P2_Equipo1 {
                                 case 2:
 
                                     System.out.println("Ingrese el nombre del pokemon");
-                                    
-                                    
-                                    
+                                    String nombre;
+
+                                    nombre = leer.next();
+
+                                    int nivel = 0;
+
+                                    int exp = 0;
+
+                                    int subnivel = 50;
+
+                                    System.out.println("Ingrese la vida del pokemon");
+                                    int vida = leer.nextInt();
+
+                                    System.out.println("Ingrese el ataque");
+                                    int ataque = leer.nextInt();
+
+                                    System.out.println("Ingrese la defensa");
+                                    int defensa = leer.nextInt();
+
+                                    System.out.println("Ingrese el especial");
+                                    int es = leer.nextInt();
+
+                                    System.out.println("Ingrese la velocidad");
+                                    int vel = leer.nextInt();
+
+                                    String estado = "Neutral";
+
+                                    for (int i = 0; i < 10; i++) {
+
+                                    }
+
                                     break;
 
                                 case 3:
@@ -151,22 +182,23 @@ public class Lab4_P2_Equipo1 {
                             System.out.println("Ingrese un indice correcto");
                         }
                     }
-                    
+
                 case 4:
-
-                    break;
-
-                case 5:
-
                     seguir = false;
                     break;
-
+                    
                 default:
-
                     System.out.println("Ingrese un dato correcto");
             }
 
         }
 
     }
+    
+    public static void mov (){
+        
+    }
+    
+    
+    
 }

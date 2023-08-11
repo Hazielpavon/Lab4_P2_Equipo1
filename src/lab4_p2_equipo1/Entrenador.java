@@ -5,6 +5,7 @@ public class Entrenador {
     private String Nombre;
     private int edad;
     private double dinero;
+    private String pok[] = new String[6];
 
     public Entrenador() {
     }
@@ -13,8 +14,11 @@ public class Entrenador {
         this.Nombre = Nombre;
         this.edad = edad;
         this.dinero = dinero;
+        this.Nombre = this.Nombre; 
     }
 
+    
+    
     public String getNombre() {
         return Nombre;
     }
@@ -39,9 +43,19 @@ public class Entrenador {
         this.dinero = dinero;
     }
 
-    @Override
-    public String toString() {
-        return " Entrenedor: " + "Nombre = " + Nombre + " , edad = " + edad + " , dinero = " + dinero;
+    public String[] getPok() {
+        return pok;
     }
 
+    public void setPok(String[] pok) {
+        this.pok = pok;
+    }
+
+    @Override
+    public String toString() {
+        return "Entrenador: " + "Nombre = " + Nombre + " , edad = " + edad + " , dinero = " + dinero + ", pokemones = " + pok;
+    }
+
+    
+    
 }
