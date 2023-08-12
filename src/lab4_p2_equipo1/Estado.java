@@ -7,7 +7,7 @@ public class Estado extends Movimiento {
     Random random = new Random();
     private String estado;
 
-    public Estado(String nombre, String descripcion) {
+    public Estado(String nombre, String descripcion, String golpe) {
         super(nombre, descripcion);
     }
 

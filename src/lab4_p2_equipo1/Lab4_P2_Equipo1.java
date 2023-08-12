@@ -61,7 +61,7 @@ public class Lab4_P2_Equipo1 {
                     Entrenador trainer1 = Entrenadores.get(opcTrainer);
                     Pokemon[] team = trainer1.getPok();
                     for (int i = 0; i < team.length; i++) {
-                        System.out.println(i+"--->"+team[i].toString());
+                        System.out.println(i + "--->" + team[i].toString());
                     }
                     System.out.println("Seleccione el poke a usar");
                     int opcPokeTrainer1 = leer.nextInt();
@@ -214,31 +214,25 @@ public class Lab4_P2_Equipo1 {
     public static void mov() {
 
         System.out.println("Ingrese el nombre del ataque");
-        String nombre;
-
-        nombre = leer.next();
+        String nombre = leer.next();
 
         System.out.println("Ingrese los detalles");
-        String detalles;
+        String detalles = leer.next();
 
-        detalles = leer.next();
+        System.out.println("El tipo de movimiento: ");
+        System.out.println("1. Estado");
+        System.out.println("2. Fisico");
+        System.out.println("3. Especial");
+        int tipo = leer.nextInt();
 
-        Movimiento m = new Movimiento(nombre, detalles);
+        Movimiento m;
 
-        System.out.println("El golpe puede ser de 3 tipos");
-        System.out.println("1. para Estado");
-        System.out.println("2. para fisico");
-        System.out.println("3. para especial");
-        int opcion = leer.nextInt();
-
-        switch (opcion) {
-
+        switch (tipo) {
             case 1:
                 String golpe = "";
                 System.out.println("Ingrese el estado del ataque 1. para neutral 2. para dormido 3. paralizado 4. quemado 5. Neutral");
                 int go = leer.nextInt();
-             
-                
+
                 boolean se = true;
 
                 while (se) {
@@ -260,22 +254,33 @@ public class Lab4_P2_Equipo1 {
                         System.out.println("Ingrese una opcion valida");
                     }
                 }
+                m = new Estado(nombre, detalles, golpe);
+                break;
 
             case 2:
-                System.out.println("Ingrese la precision");
-                int prec = leer.nextInt();
-
-                System.out.println("Ingrese los puntos de poder");
-                int pun = leer.nextInt();
+                System.out.println("Ingrese la potencia Fisica");
+                int potenciaFisica = leer.nextInt();
+                System.out.println("Ingrese la precision fisica");
+                int precisionFisica = leer.nextInt(); 
+                
+                m = new Fisico(nombre, detalles, potenciaFisica, precisionFisica);
+                break;
 
             case 3:
-                System.out.println("Ingrese la precision");
-                int preces = leer.nextInt();
+                System.out.println("Ingrese la potencia especial");
+                int potenciaEspecial = leer.nextInt();
+                System.out.println("Ingrese la precision especial");
+                int precisionEspecial = leer.nextInt();
+                
+                m = new Especiales(nombre, detalles, potenciaEspecial, precisionEspecial);
+                break;
 
-                System.out.println("Ingrese los puntos de poder");
-                int punes = leer.nextInt();
+            default:
+                System.out.println("Tipo de movimiento no válido");
+                return;
         }
 
+        movimientos.add(m);
+        System.out.println("Movimiento agregado con éxito.");
     }
-
 }

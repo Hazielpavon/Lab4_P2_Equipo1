@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class Fisico extends Movimiento{
      Random random = new Random();
-    public Fisico(String nombre, String descripcion) {
+    public Fisico(String nombre, String descripcion, int potenciaFisica, int precisionFisica) {
         super(nombre, descripcion);
     }
     
@@ -15,4 +15,5 @@ public class Fisico extends Movimiento{
    
     return numero;
     }
+    
 }

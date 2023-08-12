@@ -11,7 +11,7 @@ public class Especiales extends Movimiento {
 
     Random random = new Random();
 
-    public Especiales(String nombre, String descripcion) {
+    public Especiales(String nombre, String descripcion, int potenciaEspecial, int precisionEspecial) {
         super(nombre, descripcion);
     }
 
