@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Lab4_P2_Equipo1 {
 
     static int contador = 0;
-
+    static int contador2 = 0;
     static ArrayList<Movimiento> movimientos = new ArrayList();
     static Scanner leer = new Scanner(System.in);
 
@@ -29,6 +29,7 @@ public class Lab4_P2_Equipo1 {
             switch (opcion) {
 
                 case 1:
+                    
                     System.out.println("Ingrese el nombre del entrnador");
                     String nombree;
 
@@ -43,11 +44,12 @@ public class Lab4_P2_Equipo1 {
                     Entrenador a = new Entrenador(nombree, edad, dineroencuenta);
 
                     Entrenadores.add(a);
-
+                    contador2 ++; 
+                            
                     break;
 
                 case 2:
-
+                    if (contador2 > 1 && contador > 12){ 
                     String ok = " ";
                     String no = " ";
                     for (Entrenador arr : Entrenadores) {
@@ -93,7 +95,9 @@ public class Lab4_P2_Equipo1 {
 
                     System.out.println("Ingrese el pokemon del Entrenador #1 que va a luchar ");
                     int entrepelea12 = leer.nextInt();
-
+                    } else{
+                        System.out.println("Ingrese un entrenado primero o un pokemon primero");
+                    }
                     break;
 
                 case 3:
@@ -123,7 +127,7 @@ public class Lab4_P2_Equipo1 {
                             switch (opcion2) {
 
                                 case 1:
-                                    if (cont != 0) {
+                                    if (contador != 0) {
 
                                     } else {
                                         System.out.println("Capture un pokemon primero");
@@ -132,7 +136,7 @@ public class Lab4_P2_Equipo1 {
                                     break;
 
                                 case 2:
-
+                                    if (contador2 > 0){
                                     System.out.println("Ingrese el nombre del pokemon");
                                     String nombre;
 
@@ -182,8 +186,11 @@ public class Lab4_P2_Equipo1 {
                                     } else {
                                         trainer.setPokeInBox(p);
                                     }
+                                    contador++;
                                     break;
-
+                                    }else {
+                                        System.out.println("Ingrese un entrnador primero");
+                                    }
                                 case 3:
 
                                     seguir = false;
@@ -199,6 +206,10 @@ public class Lab4_P2_Equipo1 {
                     }
 
                 case 4:
+                    mov();
+                    break;
+
+                case 5:
                     seguir = false;
                     break;
 
@@ -281,5 +292,6 @@ public class Lab4_P2_Equipo1 {
 
         movimientos.add(m);
         System.out.println("Movimiento agregado con éxito.");
+        
     }
 }
