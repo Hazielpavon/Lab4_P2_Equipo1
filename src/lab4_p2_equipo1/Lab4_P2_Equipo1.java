@@ -1,6 +1,7 @@
 package lab4_p2_equipo1;
 
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Lab4_P2_Equipo1 {
@@ -29,7 +30,7 @@ public class Lab4_P2_Equipo1 {
             switch (opcion) {
 
                 case 1:
-                    
+
                     System.out.println("Ingrese el nombre del entrnador");
                     String nombree;
 
@@ -44,59 +45,65 @@ public class Lab4_P2_Equipo1 {
                     Entrenador a = new Entrenador(nombree, edad, dineroencuenta);
 
                     Entrenadores.add(a);
-                    contador2 ++; 
-                            
+                    contador2++;
+
                     break;
 
                 case 2:
-                    if (contador2 > 1 && contador > 12){ 
-                    String ok = " ";
-                    String no = " ";
-                    for (Entrenador arr : Entrenadores) {
 
-                        ok += Entrenadores.indexOf(arr) + " - " + arr + "\n";
-                        System.out.println(ok);
+                    if (Entrenadores.size() < 2) {
+                        System.out.println("Debe haber al menos 2 entrenadores registrados para la Battle Factory.");
+                        break;
                     }
-                    System.out.println("Seleccione el entrenador 1");
-                    int opcTrainer = leer.nextInt();
-                    Entrenador trainer1 = Entrenadores.get(opcTrainer);
-                    Pokemon[] team = trainer1.getPok();
-                    for (int i = 0; i < team.length; i++) {
-                        System.out.println(i + "--->" + team[i].toString());
-                    }
-                    System.out.println("Seleccione el poke a usar");
-                    int opcPokeTrainer1 = leer.nextInt();
-                    Pokemon pokInUse = team[opcPokeTrainer1];
-                    System.out.println(" ");
 
-                    for (Object arre : Pokemones) {
-                        if (arre instanceof Pokemon) {
-                            no += Pokemones.indexOf(arre) + " - " + arre + "\n";
+                    System.out.println("Seleccione el entrenador 1:");
+                    for (int i = 0; i < Entrenadores.size(); i++) {
+                        System.out.println(i + " - " + Entrenadores.get(i).getNombre());
+                    }
+                    int indiceEntrenador1 = leer.nextInt();
+                    Entrenador entrenador1 = Entrenadores.get(indiceEntrenador1);
+
+                    System.out.println("Seleccione el entrenador 2:");
+                    for (int i = 0; i < Entrenadores.size(); i++) {
+                        if (i != indiceEntrenador1) {
+                            System.out.println(i + " - " + Entrenadores.get(i).getNombre());
                         }
                     }
+                    int indiceEntrenador2 = leer.nextInt();
+                    Entrenador entrenador2 = Entrenadores.get(indiceEntrenador2);
 
-                    System.out.println("Ingrese el pokemon del Entrenador #1 que va a luchar ");
-                    int entrepelea1 = leer.nextInt();
-                    Pokemon.String ko = " ";
-                    String on = " ";
-                    for (Object arr : Entrenadores) {
+                    System.out.println("¡Comienza la batalla en la Battle Factory!");
+                    System.out.println(entrenador1.getNombre() + " envía a la batalla a su Pokémon:");
+                    Pokemon pokemonEntrenador1 = entrenador1.getPok()[0];
+                    System.out.println(pokemonEntrenador1);
 
-                        if (arr instanceof Entrenador) {
-                            ko += Entrenadores.indexOf(arr) + " - " + arr + "\n";
-                            System.out.println(ok);
+                    System.out.println(entrenador2.getNombre() + " envía a la batalla a su Pokémon:");
+                    Pokemon pokemonEntrenador2 = entrenador2.getPok()[0];
+                    System.out.println(pokemonEntrenador2);
+
+                    
+                    while (pokemonEntrenador1.getHP()> 0 && pokemonEntrenador2.getHP()> 0) {
+                        System.out.println(entrenador1.getNombre() + " ataca a " + entrenador2.getNombre() + ":");
+                        Movimiento movimientoEntrenador1 = pokemonEntrenador1.elegirMovimiento();
+                        int danoEntrenador1 = movimientoEntrenador1.calcularDanio(pokemonEntrenador1, pokemonEntrenador2);
+                        pokemonEntrenador2.recibirDanio(danoEntrenador1);
+                        System.out.println(entrenador2.getNombre() + " tiene " + pokemonEntrenador2.getHP()+ " puntos de vida restantes.");
+
+                        if (pokemonEntrenador2.getHP()<= 0) {
+                            System.out.println(entrenador2.getNombre() + " ha perdido la batalla.");
+                            break;
                         }
-                    }
 
-                    for (Object arre : Pokemones) {
-                        if (arre instanceof Pokemon) {
-                            on += Pokemones.indexOf(arre) + " - " + arre + "\n";
+                        System.out.println(entrenador2.getNombre() + " ataca a " + entrenador1.getNombre() + ":");
+                        Movimiento movimientoEntrenador2 = pokemonEntrenador2.elegirMovimiento();
+                        int danoEntrenador2 = movimientoEntrenador2.calcularDanio(pokemonEntrenador2, pokemonEntrenador1);
+                        pokemonEntrenador1.recibirDanio(danoEntrenador2);
+                        System.out.println(entrenador1.getNombre() + " tiene " + pokemonEntrenador1.getHP()+ " puntos de vida restantes.");
+
+                        if (pokemonEntrenador1.getHP()<= 0) {
+                            System.out.println(entrenador1.getNombre() + " ha perdido la batalla.");
+                            break;
                         }
-                    }
-
-                    System.out.println("Ingrese el pokemon del Entrenador #1 que va a luchar ");
-                    int entrepelea12 = leer.nextInt();
-                    } else{
-                        System.out.println("Ingrese un entrenado primero o un pokemon primero");
                     }
                     break;
 
@@ -128,6 +135,14 @@ public class Lab4_P2_Equipo1 {
 
                                 case 1:
                                     if (contador != 0) {
+                                        System.out.println("Seleccione el Pokémon a entrenar:");
+                                        int opcPokemon = leer.nextInt();
+                                        Pokemon pokemonAEntrenar = trainer.getPok()[opcPokemon];
+
+                                        int multiplicador = new Random().nextInt(3);
+                                        int puntosExperiencia = new Random().nextInt(4900) + 100;
+
+                                        pokemonAEntrenar.entrenar(multiplicador, puntosExperiencia);
 
                                     } else {
                                         System.out.println("Capture un pokemon primero");
@@ -136,59 +151,59 @@ public class Lab4_P2_Equipo1 {
                                     break;
 
                                 case 2:
-                                    if (contador2 > 0){
-                                    System.out.println("Ingrese el nombre del pokemon");
-                                    String nombre;
+                                    if (contador2 > 0) {
+                                        System.out.println("Ingrese el nombre del pokemon");
+                                        String nombre;
 
-                                    nombre = leer.next();
+                                        nombre = leer.next();
 
-                                    int nivel = 0;
+                                        int nivel = 0;
 
-                                    int exp = 0;
+                                        int exp = 0;
 
-                                    int subnivel = 50;
+                                        int subnivel = 50;
 
-                                    System.out.println("Ingrese la vida del pokemon");
-                                    int vida = leer.nextInt();
+                                        System.out.println("Ingrese la vida del pokemon");
+                                        int vida = leer.nextInt();
 
-                                    System.out.println("Ingrese el ataque");
-                                    int ataque = leer.nextInt();
+                                        System.out.println("Ingrese el ataque");
+                                        int ataque = leer.nextInt();
 
-                                    System.out.println("Ingrese la defensa");
-                                    int defensa = leer.nextInt();
+                                        System.out.println("Ingrese la defensa");
+                                        int defensa = leer.nextInt();
 
-                                    System.out.println("Ingrese el especial");
-                                    int es = leer.nextInt();
+                                        System.out.println("Ingrese el especial");
+                                        int es = leer.nextInt();
 
-                                    System.out.println("Ingrese la velocidad");
-                                    int vel = leer.nextInt();
+                                        System.out.println("Ingrese la velocidad");
+                                        int vel = leer.nextInt();
 
-                                    String estado = "Neutral";
-                                    Pokemon p = new Pokemon(nombre, nivel, exp, subnivel, vida, ataque, defensa, es, vel, estado);
+                                        String estado = "Neutral";
+                                        Pokemon p = new Pokemon(nombre, nivel, exp, subnivel, vida, ataque, defensa, es, vel, estado);
 
-                                    int cantMoves = 0;
+                                        int cantMoves = 0;
 
-                                    while (cantMoves != 4) {
-                                        for (int i = 0; i < movimientos.size(); i++) {
-                                            System.out.println(i + "->" + movimientos.get(i).toString());
+                                        while (cantMoves != 4) {
+                                            for (int i = 0; i < movimientos.size(); i++) {
+                                                System.out.println(i + "->" + movimientos.get(i).toString());
+                                            }
+                                            System.out.println("Seleccione el ataque que tendra el Pokemon");
+                                            int opc = leer.nextInt();
+                                            Movimiento m = movimientos.get(opc);
+                                            p.setMove(m, cantMoves);
+                                            cantMoves++;
                                         }
-                                        System.out.println("Seleccione el ataque que tendra el Pokemon");
-                                        int opc = leer.nextInt();
-                                        Movimiento m = movimientos.get(opc);
-                                        p.setMove(m, cantMoves);
-                                        cantMoves++;
-                                    }
-                                    System.out.println("1. Anadir En equipo 2. Anadir en Caja");
-                                    int boxOrTeam = leer.nextInt();
-                                    if (boxOrTeam == 1) {
-                                        int cantPokes = trainer.getPok().length;
-                                        trainer.setPokInTeam(p, cantPokes);
+                                        System.out.println("1. Anadir En equipo 2. Anadir en Caja");
+                                        int boxOrTeam = leer.nextInt();
+                                        if (boxOrTeam == 1) {
+                                            int cantPokes = trainer.getPok().length;
+                                            trainer.setPokInTeam(p, cantPokes);
+                                        } else {
+                                            trainer.setPokeInBox(p);
+                                        }
+                                        contador++;
+                                        break;
                                     } else {
-                                        trainer.setPokeInBox(p);
-                                    }
-                                    contador++;
-                                    break;
-                                    }else {
                                         System.out.println("Ingrese un entrnador primero");
                                     }
                                 case 3:
@@ -292,6 +307,6 @@ public class Lab4_P2_Equipo1 {
 
         movimientos.add(m);
         System.out.println("Movimiento agregado con éxito.");
-        
+
     }
 }

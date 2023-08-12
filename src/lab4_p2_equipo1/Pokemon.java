@@ -1,5 +1,8 @@
 package lab4_p2_equipo1;
 
+import java.util.Random;
+import static lab4_p2_equipo1.Lab4_P2_Equipo1.movimientos;
+
 public class Pokemon {
 
     private String especie;
@@ -119,6 +122,48 @@ public class Pokemon {
         this.moveset[cont] = m;
     }
 
+    public void entrenar(int multiplicador, int puntosExperiencia) {
+        int experienciaAnterior = this.exp;
+        this.exp += puntosExperiencia * multiplicador;
+
+        while (this.exp >= this.subirnivel) {
+            this.exp -= this.subirnivel;
+            this.nivel++;
+            this.subirnivel += 50; // Actualizar puntos necesarios para el siguiente nivel
+
+            // Ajustar las estadísticas del Pokémon
+            this.HP += 5;
+            this.ataque += 2;
+            this.defensa += 2;
+            this.especial += 2;
+            this.speed += 1;
+
+            System.out.println(this.especie + " ha subido de nivel ");
+        }
+
+        System.out.println(this.especie + " ha ganado " + (this.exp - experienciaAnterior) + " puntos de experiencia.");
+    }
+
+    public Movimiento elegirMovimiento() {
+        Random random = new Random();
+        int indiceMovimiento = random.nextInt(movimientos.size());
+        return movimientos.get(indiceMovimiento);
+    }
+
+    public int calcularDanio(Pokemon atacante, Pokemon objetivo, Movimiento movimiento) {
+        int poderAtaque = atacante.getAtaque();
+        int defensaObjetivo = objetivo.getDefensa();
+        int poderMovimiento = movimiento.getPoder();
+
+        int daño = (poderAtaque - defensaObjetivo) + poderMovimiento;
+
+        if (daño < 0) {
+            daño = 0;
+        }
+
+        return daño;
+    }
+
     @Override
     public String toString() {
         return "Pokemon {" + "Especie = " + especie + ", Nivel = " + nivel
@@ -127,41 +172,8 @@ public class Pokemon {
                 + "\n Ataque = " + ataque + ", Defensa = " + defensa + ", Especial = " + especial
                 + "\n Speed = " + speed + ", Estado = " + estado + '}';
     }
+
+    void recibirDanio(int danoEntrenador1) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
-
-/*
-        Scanner leer = new Scanner(System.in);
-        ArrayList<Pokemon> cosas = new ArrayList();
-        
-
-
-System.out.println("Ingrese el numero para la especie del Pokemon");
-                    System.out.println("1.");
-                    System.out.println("2.");
-                    System.out.println("3.");
-                    int Car = leer.nextInt();
-                    leer.nextLine();
-
-                    while (Car != 1 && Car != 2 && Car != 3) {
-                        System.out.println("Ingrese el numero para la especie del Pokemon");
-                        System.out.println("1.");
-                        System.out.println("2.");
-                        System.out.println("3.");
-                        Car = leer.nextInt();
-                        leer.nextLine();
-                    }
-
-                    String especie = " ";
-                    if (Car == 1) {
-                        carnes = "Pequeno";
-                    }
-
-                    if (Car == 2) {
-                        carnes = "Mediano";
-                    }
-
-                    if (Car == 3) {
-                        carnes = "Grande";
-                    }
-
- */
