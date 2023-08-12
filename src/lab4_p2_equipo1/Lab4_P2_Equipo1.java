@@ -7,13 +7,12 @@ public class Lab4_P2_Equipo1 {
 
     static int contador = 0;
 
+    static ArrayList<Movimiento> movimientos = new ArrayList();
     static Scanner leer = new Scanner(System.in);
 
     public static void main(String[] args) {
 
         ArrayList<Entrenador> Entrenadores = new ArrayList();
-
-        ArrayList<Movimiento> movimientos = new ArrayList();
 
         boolean seguir = true;
 
@@ -261,8 +260,8 @@ public class Lab4_P2_Equipo1 {
                 System.out.println("Ingrese la potencia Fisica");
                 int potenciaFisica = leer.nextInt();
                 System.out.println("Ingrese la precision fisica");
-                int precisionFisica = leer.nextInt(); 
-                
+                int precisionFisica = leer.nextInt();
+
                 m = new Fisico(nombre, detalles, potenciaFisica, precisionFisica);
                 break;
 
@@ -271,7 +270,7 @@ public class Lab4_P2_Equipo1 {
                 int potenciaEspecial = leer.nextInt();
                 System.out.println("Ingrese la precision especial");
                 int precisionEspecial = leer.nextInt();
-                
+
                 m = new Especiales(nombre, detalles, potenciaEspecial, precisionEspecial);
                 break;
 
